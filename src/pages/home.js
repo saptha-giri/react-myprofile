@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
+// Home page
 const Home = () => {
     const classes = useStyles();
     const [checked, setChecked] = React.useState(true)
