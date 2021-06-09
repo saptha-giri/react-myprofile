@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 // About page
 const About = () => {
     const classes = useStyles();
-    const [checked, setChecked] = React.useState(true)
     return (
         <Container maxWidth="md" className={classes.root}>
             <Paper className={classes.paper} elevation={3} >
