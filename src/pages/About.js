@@ -3,19 +3,24 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import profilePic from "../assets/pic.png";
+
 const useStyles = makeStyles((theme) => ({
     root: {
-        // height: "980vh",
-        // border: "1px solid",
         display: "flex",
-        // justifyContent: "center",
-        // alignItems:"center"
     },
     paper: {
         // height: "50vh",
         width: "100%",
         padding: "1rem",
         marginTop: "1rem"
+    },
+    profilePic: {
+        width: "200px",
+        height: "200px",
+        borderRadius: "50%",
+        border: "5px solid #f6f6f6",
+        backgroundColor:"#f6f6f6"
     }
 }));
 
@@ -26,17 +31,17 @@ const About = () => {
     return (
         <Container maxWidth="md" className={classes.root}>
             <Paper className={classes.paper} elevation={3} >
-                <Grid container direction="row" justify="flex-start" spacing={2}>
+                <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
 
                     <Grid item >
-                        <Button variant="contained" color="default" >default</Button>
+                        <img className={classes.profilePic} src={profilePic} alt="sapthagiri ramesh" />
                     </Grid>
-                    <Grid item >
+                    <Grid item container direction="row" >
                         <Button variant="contained" color="primary" >Primary</Button>
                     </Grid>
-                    <Grid item >
+                    {/* <Grid item>
                         <Button variant="contained" color="secondary" >secondary</Button>
-                    </Grid>
+                    </Grid> */}
 
                 </Grid>
             </Paper>

@@ -1,20 +1,28 @@
-import { Checkbox, Container, FormControlLabel, FormGroup, Grid, Paper } from '@material-ui/core';
+import { Container,Grid, Paper } from '@material-ui/core';
 import React from 'react';
-import { Button } from '@material-ui/core';
+
+import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+
+
+import { Typography } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // height: "980vh",
-        // border: "1px solid",
         display: "flex",
-        // justifyContent: "center",
-        // alignItems:"center"
+        justifyContent: "center",
+        alignItems: "center",
+        height:"90vh"
     },
     paper: {
         // height: "50vh",
         width: "100%",
-        padding: "1rem",
+        padding: "2rem",
         marginTop: "1rem"
     }
 }));
@@ -23,37 +31,42 @@ const useStyles = makeStyles((theme) => ({
 // Home page
 const Home = () => {
     const classes = useStyles();
-    const [checked, setChecked] = React.useState(true)
+    // const [checked, setChecked] = React.useState(true);
     return (
         <Container maxWidth="md" className={classes.root}>
             <Paper className={classes.paper} elevation={3} >
-                <Grid container direction="row" justify="flex-start" spacing={2}>
+                <Grid container direction="column" justify="center" alignItems="center" spacing={2}>
 
+                    {/* <Grid item >
+                        <img className={classes.profilePic} src={profilePic} alt="sapthagiri ramesh" />
+                    </Grid> */}
                     <Grid item >
-                        <Button variant="contained" color="default" >default</Button>
+                        <Typography variant="h5">SAPTHAGIRI RAMESH</Typography>
                     </Grid>
                     <Grid item >
-                        <Button variant="contained" color="primary" >Primary</Button>
-                    </Grid>
-                    <Grid item >
-                        <Button variant="contained" color="secondary" >secondary</Button>
+                        <Typography variant="h5">Full-Stack Developer</Typography>
                     </Grid>
 
                 </Grid>
-                <Grid container direction="row" justify="flex-start" spacing={2}>
 
+                <Grid container spacing={2}>
                     <Grid item >
-                        <FormGroup row>
-                            <FormControlLabel control={
-                                <Checkbox checked={checked} onChange={ (e,value)=>setChecked(value) } name="primary" color="primary" />
-                            }  label="primary"/>
-                            <FormControlLabel control={
-                                <Checkbox checked={checked} onChange={ (e,value)=>setChecked(value) } name="secondary" color="secondary" />
-                            }  label="secondary"/>
-                        </FormGroup>
+                        <Typography variant="body1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam</Typography>
                     </Grid>
-
-
+                    <Grid item container direction="row" justify="center" alignItems="center">
+                        <IconButton color="secondary" aria-label="upload picture" component={Link} to="/about">
+                            <InfoIcon />
+                        </IconButton>
+                        <IconButton color="secondary" aria-label="upload picture" component="span">
+                            <LinkedInIcon />
+                        </IconButton>
+                        <IconButton color="secondary" aria-label="upload picture" component="span">
+                            <GitHubIcon />
+                        </IconButton>
+                        <IconButton color="secondary" aria-label="upload picture" component="span">
+                            <InstagramIcon />
+                        </IconButton>
+                    </Grid>
                 </Grid>
             </Paper>
         </Container>

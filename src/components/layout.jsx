@@ -13,14 +13,13 @@ import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded'
 import PermContactCalendarRoundedIcon from '@material-ui/icons/PermContactCalendarRounded';
 import profilePic from "../assets/pic.png";
 
-const drawerWidth = 300;
+const drawerWidth = 240;
 
 const useStyle = makeStyles(theme =>({
     root: {
         flexGrow: 1,
     },
     page: {
-        background: "#f9f9f9",
         width: "100%"
     },
     drawerWidth: {
@@ -44,7 +43,8 @@ const useStyle = makeStyles(theme =>({
         padding: "1rem",
         backgroundColor: theme.palette.primary.dark,
         color: "#fff",
-        height:"25vh"
+        // height: "25vh"
+        
     }
 }));
 
@@ -76,7 +76,7 @@ const Layout = ({ children }) => {
                     onClick={handleDrawerClose}
                     onKeyPress={handleDrawerClose}
                 >
-                    <Grid container spacing={0} className={classes.profilePicContainer} direction="column" justify="flex-end" alignItems="flex-start">
+                    <Grid container spacing={1} className={classes.profilePicContainer} direction="row" justify="flex-start" alignItems="flex-start">
                         <Grid item>
                             <img className={classes.profilePic} src={profilePic} alt="sapthagiri ramesh" />
                         </Grid>
