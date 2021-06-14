@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "1rem"
     },
     profilePic: {
-        width: "200px",
-        height: "200px",
+        width: "100px",
+        height: "100px",
         borderRadius: "50%",
         border: "5px solid #f6f6f6",
         backgroundColor:"#f6f6f6"
