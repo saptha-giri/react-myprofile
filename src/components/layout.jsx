@@ -12,6 +12,8 @@ import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded';
 import PermContactCalendarRoundedIcon from '@material-ui/icons/PermContactCalendarRounded';
 import profilePic from "../assets/circle-cropped.png";
+import Button from '@material-ui/core/Button';
+
 
 const drawerWidth = 240;
 
@@ -48,6 +50,9 @@ const useStyle = makeStyles(theme =>({
         color: "#fff",
         // height: "25vh"
         
+    },
+    barTitle: {
+        flexGrow: 1,
     }
 }));
 
@@ -72,7 +77,13 @@ const Layout = ({ children, window }) => {
                     <IconButton edge="start" className={classes.menuButton} onClick={handleDrawerOpen} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h4">Sapthagiri Ramesh</Typography>
+                    <Typography variant="h5" className={classes.barTitle} noWrap>SAPTHAGIRI RAMESH</Typography>
+                    <Grid style={{flexGrow:1,display:"flex",justifyContent:"space-around"}} >
+                        <Button variant="contained" color="secondary">Home</Button>
+                        <Button variant="contained" color="secondary">About</Button>
+                        <Button variant="contained" color="secondary">Portfolio</Button>
+                        <Button variant="contained" color="secondary">Contact</Button>
+                    </Grid>
                 </Toolbar>
             </AppBar>
             <Drawer container={container} anchor={theme.direction === 'rtl' ? 'right' : 'left'} variant="temporary" open={drawerState} classes={{ paper: classes.drawerWidth }} ModalProps={{

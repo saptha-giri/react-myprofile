@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         width: "200px",
         height: "200px",
         borderRadius: "50%",
-        border: "5px solid #f6f6f6",
+        border: `5px solid ${theme.palette.secondary.light}`,
         backgroundColor: "#f6f6f6"
     },
     iconStyle: {
@@ -50,10 +50,10 @@ const Home = () => {
                 <Grid item >
                     <img className={classes.profilePic} src={profilePic} alt="sapthagiri ramesh" />
                 </Grid>
-                <Grid item >
+                <Grid item style={{textAlign:"center"}}>
                     <Typography variant="h3">SAPTHAGIRI RAMESH</Typography>
                 </Grid>
-                <Grid item >
+                <Grid item style={{textAlign:"center"}}>
                     <Typography variant="h4">Full-Stack Developer</Typography>
                 </Grid>
 
@@ -62,16 +62,16 @@ const Home = () => {
             <Grid container spacing={2}>
                 <Grid item container direction="row" justify="center" alignItems="center">
                     <IconButton color="secondary" aria-label="about" component={Link} to="/about">
-                        <InfoIcon style={{fontSize:40}} />
+                        <InfoIcon style={{fontSize:80}} />
                     </IconButton>
                     <IconButton color="secondary" aria-label="LinkedIn" component="span">
-                        <LinkedInIcon style={{fontSize:40}} />
+                        <LinkedInIcon style={{fontSize:80}} />
                     </IconButton>
                     <IconButton color="secondary" aria-label="GitHub" component="span">
-                        <GitHubIcon style={{fontSize:40}} />
+                        <GitHubIcon style={{fontSize:80}} />
                     </IconButton>
                     <IconButton color="secondary" aria-label="Instagram" component="span">
-                        <InstagramIcon style={{fontSize:40}} />
+                        <InstagramIcon style={{fontSize:80}} />
                     </IconButton>
                 </Grid>
             </Grid>
