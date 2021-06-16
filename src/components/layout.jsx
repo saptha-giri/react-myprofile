@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Divider, Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles } from "@material-ui/core";
+import { Divider, Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles, useTheme } from "@material-ui/core";
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,7 +11,7 @@ import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded';
 import PermContactCalendarRoundedIcon from '@material-ui/icons/PermContactCalendarRounded';
-import profilePic from "../assets/pic.png";
+import profilePic from "../assets/circle-cropped.png";
 
 const drawerWidth = 240;
 
@@ -20,10 +20,13 @@ const useStyle = makeStyles(theme =>({
         flexGrow: 1,
     },
     page: {
-        width: "100%"
+        display: "flex",
+        justifyContent: "center",
+        alignItems:"center"
     },
     drawerWidth: {
         width: drawerWidth,
+        overflow:'hidden'
     },
     linkStyle: {
         textDecoration: 'none',
@@ -40,7 +43,7 @@ const useStyle = makeStyles(theme =>({
         backgroundColor:theme.palette.primary.main
     },
     profilePicContainer: {
-        padding: "1rem",
+        padding: "1.5rem 0rem 0rem 1.5rem",
         backgroundColor: theme.palette.primary.dark,
         color: "#fff",
         // height: "25vh"
@@ -48,8 +51,9 @@ const useStyle = makeStyles(theme =>({
     }
 }));
 
-const Layout = ({ children }) => {
+const Layout = ({ children, window }) => {
     const classes = useStyle();
+    const theme = useTheme();
 
     const [drawerState, setDrawerState] = useState(false);
 
@@ -60,7 +64,7 @@ const Layout = ({ children }) => {
     const handleDrawerClose = () => {
         setDrawerState(false)
     }
-
+    const container = window !== undefined ? () => window().document.body : undefined;
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -68,15 +72,17 @@ const Layout = ({ children }) => {
                     <IconButton edge="start" className={classes.menuButton} onClick={handleDrawerOpen} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6">Sapthagiri Ramesh</Typography>
+                    <Typography variant="h4">Sapthagiri Ramesh</Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer anchor="left" open={drawerState} classes={{ paper: classes.drawerWidth }} onClose={handleDrawerClose} >
+            <Drawer container={container} anchor={theme.direction === 'rtl' ? 'right' : 'left'} variant="temporary" open={drawerState} classes={{ paper: classes.drawerWidth }} ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }} onClose={handleDrawerClose} >
                 <div
                     onClick={handleDrawerClose}
                     onKeyPress={handleDrawerClose}
                 >
-                    <Grid container spacing={1} className={classes.profilePicContainer} direction="row" justify="flex-start" alignItems="flex-start">
+                    <Grid container spacing={1} className={classes.profilePicContainer} direction="column" justify="flex-start" alignItems="flex-start">
                         <Grid item>
                             <img className={classes.profilePic} src={profilePic} alt="sapthagiri ramesh" />
                         </Grid>
@@ -84,7 +90,7 @@ const Layout = ({ children }) => {
                             <Typography className={ classes.title } variant="p">Sapthagiri Ramesh</Typography>
                         </Grid>
                         <Grid item>
-                            <Typography variant="body2">sapthagiri.dev@gmail.com</Typography>
+                            <Typography variant="p">sapthagiri.dev@gmail.com</Typography>
                         </Grid>
                     </Grid>
                     <Divider />
