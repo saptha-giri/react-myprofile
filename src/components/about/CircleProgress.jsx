@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 const CircleProgress = ({ value }) => {
     return (
         <Box position="relative" display="inline-flex">
-            <CircularProgress variant="determinate" color="secondary" size={95} thickness={8} value={value} />
+            <CircularProgress variant="determinate" color="primary" size={95} thickness={4} value={value} />
             <Box
                 top={0}
                 left={0}

@@ -12,7 +12,7 @@ import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded';
 import PermContactCalendarRoundedIcon from '@material-ui/icons/PermContactCalendarRounded';
 import profilePic from "../assets/circle-cropped.png";
-import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
 const drawerWidth = 240;
@@ -22,9 +22,9 @@ const useStyle = makeStyles(theme =>({
         flexGrow: 1,
     },
     page: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems:"center"
+        // display: "flex",
+        // justifyContent: "center",
+        // alignItems:"center"
     },
     drawerWidth: {
         width: drawerWidth,
@@ -32,6 +32,7 @@ const useStyle = makeStyles(theme =>({
     },
     linkStyle: {
         textDecoration: 'none',
+        color:'#fff'
     },
     title: {
         fontWeight:"bold"
@@ -48,18 +49,21 @@ const useStyle = makeStyles(theme =>({
         padding: "1.5rem 0rem 0rem 1.5rem",
         backgroundColor: theme.palette.primary.dark,
         color: "#fff",
-        // height: "25vh"
-        
     },
     barTitle: {
         flexGrow: 1,
+    },
+    menuStyle: {
+        flexGrow: 1,
+        display: "flex",
+        justifyContent: "space-around",
     }
 }));
 
 const Layout = ({ children, window }) => {
     const classes = useStyle();
     const theme = useTheme();
-
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
     const [drawerState, setDrawerState] = useState(false);
 
     const handleDrawerOpen = () => {
@@ -72,18 +76,18 @@ const Layout = ({ children, window }) => {
     const container = window !== undefined ? () => window().document.body : undefined;
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} onClick={handleDrawerOpen} color="inherit" aria-label="menu">
+                    {(matches)?<div></div>:<IconButton edge="start" className={classes.menuButton} onClick={handleDrawerOpen} color="inherit" aria-label="menu">
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton>}
                     <Typography variant="h5" className={classes.barTitle} noWrap>SAPTHAGIRI RAMESH</Typography>
-                    <Grid style={{flexGrow:1,display:"flex",justifyContent:"space-around"}} >
-                        <Button variant="contained" color="secondary">Home</Button>
-                        <Button variant="contained" color="secondary">About</Button>
-                        <Button variant="contained" color="secondary">Portfolio</Button>
-                        <Button variant="contained" color="secondary">Contact</Button>
-                    </Grid>
+                    {(matches)?<Grid className={classes.menuStyle} >
+                        <Link className={classes.linkStyle} to="/">Home</Link>
+                        <Link className={classes.linkStyle} to="/about">About</Link>
+                        <Link className={classes.linkStyle} to="/portfolio">Portfolio</Link>
+                        <Link className={classes.linkStyle} to="/contact">Contact</Link>
+                    </Grid>:<div></div>}
                 </Toolbar>
             </AppBar>
             <Drawer container={container} anchor={theme.direction === 'rtl' ? 'right' : 'left'} variant="temporary" open={drawerState} classes={{ paper: classes.drawerWidth }} ModalProps={{
@@ -93,15 +97,15 @@ const Layout = ({ children, window }) => {
                     onClick={handleDrawerClose}
                     onKeyPress={handleDrawerClose}
                 >
-                    <Grid container spacing={1} className={classes.profilePicContainer} direction="column" justify="flex-start" alignItems="flex-start">
+                    <Grid container  className={classes.profilePicContainer} direction="column" justify="flex-start" alignItems="flex-start">
                         <Grid item>
                             <img className={classes.profilePic} src={profilePic} alt="sapthagiri ramesh" />
                         </Grid>
                         <Grid item>
-                            <Typography className={ classes.title } variant="p">Sapthagiri Ramesh</Typography>
+                            <Typography className={ classes.title } variant="body1">Sapthagiri Ramesh</Typography>
                         </Grid>
                         <Grid item>
-                            <Typography variant="p">sapthagiri.dev@gmail.com</Typography>
+                            <Typography variant="body1">sapthagiri.dev@gmail.com</Typography>
                         </Grid>
                     </Grid>
                     <Divider />

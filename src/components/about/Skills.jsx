@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     },
     content: {
-        padding:"1.5rem"
+        padding:".5rem"
     }
 }));
 
 const Skills = () => {
     const classes = useStyles();
     return (
-        <Grid container className={classes.content} display="flex" alignItems="center" justifyContent="center" spacing={5}>
+        <Grid container className={classes.content} display="flex" alignItems="center" justify="center" spacing={1}>
 
             <Grid item xl lg md sm xs className={classes.skillText}>
                 <CircleProgress value={96} />
