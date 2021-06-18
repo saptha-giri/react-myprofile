@@ -17,9 +17,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
-        justifyContent: "space-evenly",
+        justifyContent: "center",
         alignItems: "center",
-        height: "90vh",
+        height: "100vh",
         flexDirection: "column",
     },
     paper: {
@@ -52,11 +52,11 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
     const classes = useStyles();
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('md'));
+    const matches = useMediaQuery(theme.breakpoints.up('lg'));
     
     
     return (
-        <Container maxWidth="md" className={classes.root}>
+        <Container maxWidth="lg" className={classes.root}>
             {/* <Paper className={classes.paper} elevation={3} > */}
             <Grid container direction="column" justify="center" alignItems="center" spacing={2}>
 
@@ -75,7 +75,7 @@ const Home = () => {
             <Grid container spacing={2}>
                 <Grid item container direction="row" justify="center" alignItems="center">
                     <IconButton color="primary" aria-label="about" component={routerLink} to="/about">
-                        <InfoIcon style={{fontSize:`${(matches)?80:40}`}} />
+                        <InfoIcon style={{ fontSize: `${(matches) ? 80 : 40}` }} />
                     </IconButton>
                     <IconButton color="primary" aria-label="LinkedIn" component={Link} rel="noopener noreferrer" target="_blank" href="https://linkedin.com/in/sapthagiri-ramesh-702473a6">
                         <LinkedInIcon style={{fontSize:`${(matches)?80:40}`}} />

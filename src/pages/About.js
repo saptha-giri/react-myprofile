@@ -13,9 +13,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 const useStyles = makeStyles((theme) => ({
     root: {
         // display: "flex",
-        flexGrow:1,
+        flexGrow: 1,
         marginTop: "3.5rem",
-        padding:"1.5rem"
+        padding: "1.5rem"
     },
     paper: {
         width: "100%",
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     left: {
         // background: theme.palette.primary.main,
         // color: "#fff",
-        padding:"2rem"
+        padding: "2rem"
     },
     mobileProfilePic: {
         width: "80px",
@@ -52,7 +52,7 @@ const About = () => {
     const classes = useStyles();
     const theme = useTheme();
 
-    const matches = useMediaQuery(theme.breakpoints.up('md'));
+    const matches = useMediaQuery(theme.breakpoints.up('lg'));
 
     return (
         <Container maxWidth="lg" className={classes.root}>
@@ -63,15 +63,16 @@ const About = () => {
                 <Grid container direction="row" >
 
                     <Grid className={classes.left} item container xl={6} lg={6} md={6} sm={12} xs={12} direction="column" alignItems="center" justify="center">
-                        <img className={(matches)?classes.profilePic:classes.mobileProfilePic} src={profilePic} alt="sapthagiri ramesh" />
-                        <Typography style={{textAlign:"center"}} variant="h4">Sapthagiri Ramesh</Typography>
+                        <img className={(matches) ? classes.profilePic : classes.mobileProfilePic} src={profilePic} alt="sapthagiri ramesh" />
+                        <Typography style={{ textAlign: "center" }} variant="h4">Sapthagiri Ramesh</Typography>
                         <Typography variant="h5">Full-Stack Developer</Typography>
                     </Grid>
+
                     <Description />
 
                 </Grid>
                 <Grid item >
-                    <Typography style={{marginTop:10,marginBottom:40}} variant="h3" >SKILLS</Typography>
+                    <Typography style={{ marginTop: 10, marginBottom: 40 }} variant="h3" >SKILLS</Typography>
                 </Grid>
                 <Skills />
             </Grid>

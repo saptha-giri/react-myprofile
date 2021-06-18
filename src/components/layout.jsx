@@ -11,6 +11,7 @@ import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded';
 import PermContactCalendarRoundedIcon from '@material-ui/icons/PermContactCalendarRounded';
+import PersonAddRoundedIcon from '@material-ui/icons/PersonAddRounded';
 import profilePic from "../assets/circle-cropped.png";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -20,6 +21,7 @@ const drawerWidth = 240;
 const useStyle = makeStyles(theme =>({
     root: {
         flexGrow: 1,
+        // backgroundColor: "#4f8db9"
     },
     page: {
         // display: "flex",
@@ -46,7 +48,7 @@ const useStyle = makeStyles(theme =>({
         backgroundColor:theme.palette.primary.main
     },
     profilePicContainer: {
-        padding: "1.5rem 0rem 0rem 1.5rem",
+        padding: "1.5rem 0rem .5rem 1rem",
         backgroundColor: theme.palette.primary.dark,
         color: "#fff",
     },
@@ -85,6 +87,7 @@ const Layout = ({ children, window }) => {
                     {(matches)?<Grid className={classes.menuStyle} >
                         <Link className={classes.linkStyle} to="/">Home</Link>
                         <Link className={classes.linkStyle} to="/about">About</Link>
+                        <Link className={classes.linkStyle} to="/experience">Experience</Link>
                         <Link className={classes.linkStyle} to="/portfolio">Portfolio</Link>
                         <Link className={classes.linkStyle} to="/contact">Contact</Link>
                     </Grid>:<div></div>}
@@ -122,6 +125,13 @@ const Layout = ({ children, window }) => {
                                 <InfoRoundedIcon />
                             </ListItemIcon>
                             <ListItemText>About</ListItemText>
+                        </ListItem>
+
+                        <ListItem button component={Link} to="/experience">
+                            <ListItemIcon>
+                                <PersonAddRoundedIcon />
+                            </ListItemIcon>
+                            <ListItemText>Experience</ListItemText>
                         </ListItem>
 
                         <ListItem button component={Link} to="/portfolio">
